@@ -85,27 +85,24 @@ public class ReviewControllerTest {
 	public void shouldAddAllReviewsToModel() {
 		Collection<Review> allReviews = Arrays.asList(review1, review2);
 		when(reviewRepo.findAll()).thenReturn(allReviews);
-
 		underTest.findAllReviews(model);
-		verify(model).addAttribute("reviews", allReviews);
+		verify(model).addAttribute("reviewsModel", allReviews);
 	}
 	
 	@Test
 	public void shouldAddAllCategoriesToModel() {
 		Collection<Category> allCategories = Arrays.asList(category1, category2);
 		when(categoryRepo.findAll()).thenReturn(allCategories);
-
 		underTest.findAllCategories(model);
-		verify(model).addAttribute("categories", allCategories);
+		verify(model).addAttribute("categoriesModel", allCategories);//
 	}
 	
 	@Test	
 	public void shouldAddAllTagsToModel() {
 		Collection<Tag> allTags = Arrays.asList(tag1, tag2);
 		when(tagRepo.findAll()).thenReturn(allTags);
-
 		underTest.findAllTags(model);
-		verify(model).addAttribute("tags", allTags);
+		verify(model).addAttribute("tagsModel", allTags);
 	}
 	
 	
