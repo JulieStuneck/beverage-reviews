@@ -4,15 +4,24 @@
 	<title>A Review</title>
 </head>
 <body>
-	<h1>A Review</h1>
+	<h1>A Single Review</h1>
 
-	<div th:each="review: ${reviews}">
-		<p th:text="${review.name}"></p>
+	<div th:each="review: ${reviewsModel}">
+		<h2 th:text="${review.name}"></h2>
 		<p th:text="${review.description}"></p>
-		<img src="${review.image}">
-		<p th:text="${review.beverage}"></p>
-		<p th:each="tag: ${tags}"></p>
-		<a href="http://localhost:8080/show-reviews">Back to Reviews View</a>
+		<img th:src="${review.image}">
+		
+		<h3>Category for this review</h3>
+		<div th:each="category: ${review.beverage}">
+			<a th:href="@{/category(id=${category.id})}" th:text="${category.beverage}"></a>
+		</div>
+		
+		<h3>Tags associated with this review</h3>
+		<div th:each="tag: ${review.tags}">
+			<a th:href="@{/tag(id=${tag.id})}" th:text="${tag.description}"></a>
+			</div>		
 	</div>
+	
+			<a href="http://localhost:8080/reviews">Back to Reviews View</a>
 </body>
 </html>
