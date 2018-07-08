@@ -63,7 +63,7 @@ public class ReviewController {
 	}
 
 	@RequestMapping("/show-categories")
-	public void findAllCategories(Model model) {
+	public String findAllCategories(Model model) {
 		model.addAttribute("categories", categoryRepo.findAll());
 		return ("categories");		
 	}
