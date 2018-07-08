@@ -29,14 +29,20 @@ public class ReviewControllerMockMVCTest {
 	@MockBean
 	private ReviewRepository reviewRepo;
 	
+	@MockBean
+	private CategoryRepository categoryRepo;
+	
 	@Mock
 	private Review review1;
 	
+	@Mock
+	private Category category1;
+	
 	@Test //also tag and category
 	public void shouldRouteToSingleReviewView() throws Exception {
-		long review1Id = 1;
-		when(reviewRepo.findById(review1Id)).thenReturn(Optional.of(review1));
-		mvc.perform(get("/review?id=1")).andExpect(view().name(is("review")));
+		long reviewId = 1;
+		when(reviewRepo.findById(reviewId)).thenReturn(Optional.of(review1));
+		mvc.perform(get("/review?id=1")).andExpect(view().name(is("reviewTemplate")));
 	}
 
 	@Test
