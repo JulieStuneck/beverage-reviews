@@ -1,0 +1,26 @@
+*{
+	Line-height: 1.618em;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	
+	background-color: blue;
+	color: white;
+
+}
+{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+:root {
+	--light: #ddd;
+	--dark: #333;
+}
+
+.container {
+	background-color: #ffb;
+ }
