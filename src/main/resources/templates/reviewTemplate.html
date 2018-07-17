@@ -19,7 +19,33 @@
 		<h3>Tags associated with this review</h3>
 		<div th:each="tag: ${review.tags}">
 			<a th:href="@{/tag(id=${tag.id})}" th:text="${tag.description}"></a>
-			</div>		
+			</div>	
+		
+		<div class="add-comment">
+			<form method="POST">
+				<section>
+					<label>Enter your name:</label>
+					<input type="text" name="author"/>
+				</section>
+				<section>
+					<label>What do you think of this review?</label>
+					<input type="text" name="content"/>
+				</section>
+				<section>
+					<input type="hidden" th:value="${reviewsModel.id}" name="reviewId"/>
+				</section>
+				<section>
+					<button th:formaction = "@{/add-comment}">Add Comment</button>
+				</section>			
+			</form>
+			
+			<div th:each="comment: ${reviewsModel.comments}">
+				<h5><span th:text="${comment.author}">Commenter</span> says...</h5>
+				<p th:text="${comment.content}"></p>
+			</div>
+		
+		</div>	
+			
 	</div>
 	
 			<a href="http://localhost:8080/reviews">Back to Reviews View</a>
