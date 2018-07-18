@@ -24,7 +24,7 @@ public class ReviewPopulator implements CommandLineRunner {
 		Tag hot = new Tag("Hot");
 		hot = tagRepo.save(hot);
 		Tag cold = new Tag("Cold");
-		hot = tagRepo.save(cold);
+		cold = tagRepo.save(cold);
 		Tag nonAlcoholic = new Tag("Non-Alcoholic");
 		nonAlcoholic = tagRepo.save(nonAlcoholic);
 		Tag alcoholic = new Tag("Alcoholic");
