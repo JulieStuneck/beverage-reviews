@@ -42,15 +42,15 @@ public class ReviewPopulator implements CommandLineRunner {
 		//@Lob - add this to Review.java if want to add long description
 		//Review(String name, String description, String image, Category beverage, Tag...tags)
 		
-		Review dunkin = new Review("Dunkin", "Loved by many.", "/images/Dunkin.jpg", coffee, hot, cold,nonAlcoholic);
+		Review dunkin = new Review("Dunkin", "Loved by many.", "/images/coffee200.jpg", coffee, hot, cold,nonAlcoholic);
 		dunkin = reviewRepo.save(dunkin);
-		reviewRepo.save(new Review("Starbucks", "Easy to find. A little too hot.", "/images/Starbucks.jpg", coffee, hot, cold, nonAlcoholic));
-		reviewRepo.save(new Review("Mango Tea", "The Best - hot or iced.", "/images/MangoTea.jpg", tea, hot, cold, nonAlcoholic));
-		reviewRepo.save(new Review("Constant Comment", "A necessity for any cupboard", "/images/BlackTea.jpg", tea, hot, cold, nonAlcoholic  ));
-		reviewRepo.save(new Review("Hoppin' Frog", "Great beer! Worth the drive!", "/images/DarkBeer.jpg", beer, cold, alcoholic));
-		reviewRepo.save(new Review("Homebrew", "A bit of a dice-toss, but great fun.", "/images/Homebrew.jpg", beer, cold, alcoholic));
-		reviewRepo.save(new Review("White Wine", "Best served cold.", "WhiteWine.jpg", wine, cold, alcoholic));
-		reviewRepo.save(new Review("Red Wine", "Great for sipping or with food.", "images/Cabernet.jpg", wine, alcoholic));
+		reviewRepo.save(new Review("Starbucks", "Easy to find. A little too hot.", "/images/Starbucks200.jpg", coffee, hot, cold, nonAlcoholic));
+		reviewRepo.save(new Review("Mango Tea", "The Best - hot or iced.", "/images/Mango200.jpg", tea, hot, cold, nonAlcoholic));
+		reviewRepo.save(new Review("Constant Comment", "A necessity for any cupboard", "/images/BlackTea200.jpg", tea, hot, cold, nonAlcoholic  ));
+		reviewRepo.save(new Review("Hoppin' Frog", "Great beer! Worth the drive!", "/images/DarkBeer200.jpg", beer, cold, alcoholic));
+		reviewRepo.save(new Review("Homebrew", "A bit of a dice-toss, but great fun.", "/images/Homebrew200.jpg", beer, cold, alcoholic));
+		reviewRepo.save(new Review("White Wine", "Best served cold.", "/images/WhiteWine200.jpg", wine, cold, alcoholic));
+		reviewRepo.save(new Review("Red Wine", "Great for sipping or with food.", "/images/Cab200.jpg", wine, alcoholic));
 	}
 	
 	
