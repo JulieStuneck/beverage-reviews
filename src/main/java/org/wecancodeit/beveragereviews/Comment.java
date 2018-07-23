@@ -9,33 +9,33 @@ import javax.persistence.ManyToOne;
 public class Comment {
 
 	private String author;
-	
-	@ManyToOne	//Many Comments to one review (Entity/Comment to Field/review
+
+	@ManyToOne // Many Comments to one review (Entity/Comment to Field/review
 	private Review review;
 	private String content;
-	
+
 	@Id
 	@GeneratedValue
 	private long id;
-	
-	public long getId() {	
+
+	public long getId() {
 		return id;
 	}
-	
+
 	public String getAuthor() {
 		return author;
 	}
-	
+
 	public Review getReview() {
 		return review;
 	}
-	
+
 	public String getContent() {
 		return content;
 	}
-	
+
 	public Comment() {
-		
+
 	}
 
 	public Comment(String author, Review review, String content) {
@@ -65,7 +65,5 @@ public class Comment {
 			return false;
 		return true;
 	}
-	
-
 
 }

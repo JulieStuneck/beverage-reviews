@@ -1,0 +1,41 @@
+<html>
+
+<head>
+	<title>Comments Page</title>
+</head>
+
+<body>
+
+<div class="container">
+	<header>
+		<h1>Comments Page</h1>
+	</header>
+	
+<div>
+	<section class="add-comment">
+		<input type="text"/>
+		<button>Submit Comment</button>	
+	</section>
+	
+	<section class="remove-comment">
+		<input type="text"/>
+		<button>Remove Comment</button>	
+	</section>
+	
+	<section class="comments-list">
+		<h2>Here is a list of our current comments:</h2>
+		<ul>
+			<li th:if="${commentsModel.size() == 0}">Currently no comments...please add some!</li>
+			<li th:if="${commentsModel.size() != 0" th:each="comment: ${commentsModel}">
+				<a th:href="@{/comment(id=${comment.id})}" th:text="${comment.content}"></a>		
+		</ul>	
+	</section>
+</div>	
+	
+
+</div> <!--container-->
+
+
+</body>
+
+</html>

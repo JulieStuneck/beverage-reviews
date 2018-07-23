@@ -80,7 +80,7 @@ public class TagController {
 	//Because the review and tag are tied together, Ajax wants to delete the review with the tag (not tag alone)
 	
 	//Use Ajax to remove Tag from Database (detach them from the reviews)
-	@RequestMapping(path = "/tag/remove/{tagName}", method = RequestMethod.POST)
+	@RequestMapping(path = "/tags/remove/{tagName}", method = RequestMethod.POST)
 	public String RemoveTag(@PathVariable String tagName, Model model) {//only need a PathVariable for tag by name
 		
 		Tag tagToDelete = tagRepo.findByDescriptionIgnoreCase(tagName);//find tag that we want to delete
