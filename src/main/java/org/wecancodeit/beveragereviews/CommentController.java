@@ -36,19 +36,36 @@ public class CommentController {
 		return "redirect:/review?id=" + reviewId;
 	}
 	
-	@RequestMapping("/remove-comment-button")
-	public String removeCommentButton(@RequestParam String author, @RequestParam Long commentId, @RequestParam Long reviewId) {
-		Optional<Comment> commentToRemoveResult = commentRepo.findById(commentId);
-		Comment commentToRemove = commentToRemoveResult.get();
-		
-//		Optional<Review> reviewResult = reviewRepo.findById(reviewId);
-//		Review review = reviewResult.get();
-		
-		commentRepo.delete(commentToRemove);
-		
-		return "redirect:/review?id=" + reviewId;
-	}
+//	@RequestMapping("/remove-comment-button")
+//	public String removeCommentButton(@RequestParam String author, @RequestParam Long commentId, @RequestParam Long reviewId) {
+//		Optional<Comment> commentToRemoveResult = commentRepo.findByAuthor(commentAuthor);
+//		Comment commentToRemove = commentToRemoveResult.get();
+//		
+//		
+////		Optional<Review> reviewResult = reviewRepo.findById(reviewId);
+////		Review review = reviewResult.get();
+//		
+//		commentRepo.delete(commentToRemove);
+//		
+//		return "redirect:/review?id=" + reviewId;
+//	}
 	
+	
+	//Use Ajax to remove Tag from Database (detach them from the reviews)
+//	@RequestMapping(path = "/tags/remove/{tagName}", method = RequestMethod.POST)
+//	public String RemoveTag(@PathVariable String tagName, Model model) {//only need a PathVariable for tag by name
+//		
+//		Tag tagToDelete = tagRepo.findByDescriptionIgnoreCase(tagName);//find tag that we want to delete
+//		if(tagRepo.findByDescriptionIgnoreCase(tagName)!= null) {
+//			for(Review review: tagToDelete.getReviews()) {//iterate over all reviews and remove the specific tag from each review (otherwise will remove all the reviews)
+//				review.removeTag(tagToDelete);//tag entity has a collection of reviews. Hit on all reviews and see which have the tag. Every time find tag, remove it.
+//				reviewRepo.save(review);//remove the tag from the review
+//			}
+//		}
+//		tagRepo.delete(tagToDelete);//delete the tag from the whole database - we can do this because reviews are not required to have a tag
+//		model.addAttribute("tagsModel", tagRepo.findAll());						
+//		return "partials/tags-list-removed";
+//	}
 	
 	
 	//Show Comments with Java and Thymeleaf
