@@ -62,19 +62,28 @@
 				<p th:text="${comment.content}"></p>
 			</div>
 		</div>	
-
+		
+		
+ 
 		<div class="remove-comment-button">
 			<form method="POST">
 				<section>
 					<label>Whose comment do you want to remove?:</label>
 					<input type="text" name="author"/>
 				</section>	
+				
+				<section class="remove-comment">
+					<input type="text"/>
+					<button>Remove Comment</button>	
+				</section>
+	<!--
 				<section>
 					<button th:formaction = "@{/remove-comment-button}">Remove Comment</button>
-				</section>			
+				</section>	
+	-->					
 			</form>
 		</div>	
-			
+ 			
 	<!--  		
 			<form method="POST">
 			<input name="reviewId" type="hidden" th:value="${review.id}"/>

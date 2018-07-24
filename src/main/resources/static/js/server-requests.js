@@ -35,3 +35,8 @@ function removeTags(tagName){
 	xhr.open('POST', '/tags/remove/' + tagName, true)
 	xhr.send()
 }
+
+function removeComment(authorName) {
+	xhr.open('POST', '/comment/remove/' + authorName, true )
+}
+

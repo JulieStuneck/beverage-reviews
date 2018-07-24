@@ -38,8 +38,8 @@ public class CommentController {
 	
 //	@RequestMapping("/remove-comment-button")
 //	public String removeCommentButton(@RequestParam String author, @RequestParam Long commentId, @RequestParam Long reviewId) {
-//		Optional<Comment> commentToRemoveResult = commentRepo.findByAuthor(commentAuthor);
-//		Comment commentToRemove = commentToRemoveResult.get();
+//		Comment commentToRemoveResult = commentRepo.findByAuthor(author);
+//		Comment commentToRemove = commentToRemoveResult.getId();
 //		
 //		
 ////		Optional<Review> reviewResult = reviewRepo.findById(reviewId);
@@ -51,21 +51,14 @@ public class CommentController {
 //	}
 	
 	
-	//Use Ajax to remove Tag from Database (detach them from the reviews)
-//	@RequestMapping(path = "/tags/remove/{tagName}", method = RequestMethod.POST)
-//	public String RemoveTag(@PathVariable String tagName, Model model) {//only need a PathVariable for tag by name
-//		
-//		Tag tagToDelete = tagRepo.findByDescriptionIgnoreCase(tagName);//find tag that we want to delete
-//		if(tagRepo.findByDescriptionIgnoreCase(tagName)!= null) {
-//			for(Review review: tagToDelete.getReviews()) {//iterate over all reviews and remove the specific tag from each review (otherwise will remove all the reviews)
-//				review.removeTag(tagToDelete);//tag entity has a collection of reviews. Hit on all reviews and see which have the tag. Every time find tag, remove it.
-//				reviewRepo.save(review);//remove the tag from the review
-//			}
-//		}
-//		tagRepo.delete(tagToDelete);//delete the tag from the whole database - we can do this because reviews are not required to have a tag
-//		model.addAttribute("tagsModel", tagRepo.findAll());						
-//		return "partials/tags-list-removed";
-//	}
+	//Use Ajax to remove comment from Database
+	@RequestMapping(path = "/comment/remove/{authorName}", method = RequestMethod.POST)
+	public String Remove (@PathVariable String authorName, Model model) {
+		Comment commentToRemove = commentRepo.findByAuthor(authorName);
+		commentRepo.delete(commentToRemove);
+		model.addAttribute("commentsModel", commentRepo.findAll());						
+		return "redirect:/review?id=";
+	}
 	
 	
 	//Show Comments with Java and Thymeleaf
