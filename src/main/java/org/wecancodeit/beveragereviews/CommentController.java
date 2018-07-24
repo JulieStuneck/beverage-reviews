@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class CommentController {
@@ -35,23 +36,38 @@ public class CommentController {
 		return "redirect:/review?id=" + reviewId;
 	}
 	
-	//Show Comments with Java and Thymeleaf
-	@RequestMapping("/all-comments-ajax")
-	public String showAllComments(Model model) {
-		model.addAttribute("commentsModel", commentRepo.findAll());
-		return "commentsAjax";
+	@RequestMapping("/remove-comment-button")
+	public String removeCommentButton(@RequestParam String author, @RequestParam Long commentId, @RequestParam Long reviewId) {
+		Optional<Comment> commentToRemoveResult = commentRepo.findById(commentId);
+		Comment commentToRemove = commentToRemoveResult.get();
+		
+//		Optional<Review> reviewResult = reviewRepo.findById(reviewId);
+//		Review review = reviewResult.get();
+		
+		commentRepo.delete(commentToRemove);
+		
+		return "redirect:/review?id=" + reviewId;
 	}
 	
+	
+	
+	//Show Comments with Java and Thymeleaf
+//	@RequestMapping("/all-comments-ajax")
+//	public String showAllComments(Model model) {
+//		model.addAttribute("commentsModel", commentRepo.findAll());
+//		return "commentsAjax";
+//	}
+	
 	//Use Ajax to Add Comments to the Database
-	@RequestMapping(path = "/comments/{commentName}", method = RequestMethod.POST)
-	public String AddComment(@PathVariable String commentName, Model model) {
-		Comment commentToAdd=commentRepo.findByDescription(commentName);
-		if(commentToAdd == null) {
-			commentToAdd = new Comment(commentName);
-			commentRepo.save(commentToAdd);
-		}
-		
-		return "";
-	}
+//	@RequestMapping(path = "/comments/{commentName}", method = RequestMethod.POST)
+//	public String AddComment(@PathVariable String commentName, Model model) {
+//		Comment commentToAdd=commentRepo.findByDescription(commentName);
+//		if(commentToAdd == null) {
+//			commentToAdd = new Comment(commentName);
+//			commentRepo.save(commentToAdd);
+//		}
+//		
+//		return "";
+//	}
 
 }
