@@ -36,28 +36,21 @@ public class CommentController {
 		return "redirect:/review?id=" + reviewId;
 	}
 	
+//	@RequestMapping("/remove-comment-button")
+//	public String removeComment(String author, Long reviewId) {
+//		Comment toRemove = commentRepo.findByAuthor(author);
+//		commentRepo.delete(toRemove);
+//		
+//		return "redirect:/review?id=" + reviewId;
+//	}
+//	
 	@RequestMapping("/remove-comment-button")
-	public String removeCommentButton(Long reviewId, Long commentId) {
-		commentRepo.deleteById(commentId);
+	public String removeComment(String author, Long reviewId) {
+		Comment toRemove = commentRepo.findByAuthor(author);
+		commentRepo.delete(toRemove);
 		
 		return "redirect:/review?id=" + reviewId;
 	}
-	
-//	@RequestMapping("/remove-comment-button")
-//	public String removeCommentButton(Long commentId, Long reviewId) {
-//		Optional<Comment> commentToRemoveResult = commentRepo.findById(commentId);
-//		Comment commentToRemove = commentToRemoveResult.get();
-//		
-//		Optional<Review> reviewResult = reviewRepo.findById(reviewId);
-//		Review review = reviewResult.get();
-//		
-//		commentRepo.deleteById(commentId);
-//		
-//		review.removeComment(commentToRemove);
-//		reviewRepo.save(review);
-//		
-//		return "redirect:/review?id=" + reviewId;
-//				
-//	}
+
 	
 }
