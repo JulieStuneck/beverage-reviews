@@ -37,31 +37,27 @@ public class CommentController {
 	}
 	
 	@RequestMapping("/remove-comment-button")
-	public String removeCommentButton(Long commentId, Long reviewId) {
-		Optional<Comment> commentToRemoveResult = commentRepo.findById(commentId);
-		Comment commentToRemove = commentToRemoveResult.get();
-		
-		Optional<Review> reviewResult = reviewRepo.findById(reviewId);
-		Review review = reviewResult.get();
-		
+	public String removeCommentButton(Long reviewId, Long commentId) {
 		commentRepo.deleteById(commentId);
 		
-		review.removeComment(commentToRemove);
-		reviewRepo.save(review);
-		
 		return "redirect:/review?id=" + reviewId;
-				
 	}
 	
-	
-//	//Use Ajax to remove comment from Database
-//	@RequestMapping(path = "/remove-comment/{authorName}", method = RequestMethod.POST)
-//	public String Remove (@PathVariable String authorName, Model model) {
-//		Comment commentToRemove = commentRepo.findByAuthor(authorName);
-//		commentRepo.delete(commentToRemove);
-//		model.addAttribute("commentsModel", commentRepo.findAll());						
-//		return "redirect:/review?id=";
+//	@RequestMapping("/remove-comment-button")
+//	public String removeCommentButton(Long commentId, Long reviewId) {
+//		Optional<Comment> commentToRemoveResult = commentRepo.findById(commentId);
+//		Comment commentToRemove = commentToRemoveResult.get();
+//		
+//		Optional<Review> reviewResult = reviewRepo.findById(reviewId);
+//		Review review = reviewResult.get();
+//		
+//		commentRepo.deleteById(commentId);
+//		
+//		review.removeComment(commentToRemove);
+//		reviewRepo.save(review);
+//		
+//		return "redirect:/review?id=" + reviewId;
+//				
 //	}
-//	
-
+	
 }
