@@ -37,12 +37,14 @@ public class CommentController {
 	}
 	
 	@RequestMapping("/remove-comment-button")
-	public String removeCommentButton(@RequestParam String author, @RequestParam Long reviewId) {
-		Optional<Comment> commentToRemoveResult = commentRepo.findByAuthor(author);
+	public String removeCommentButton(Long commentId, Long reviewId) {
+		Optional<Comment> commentToRemoveResult = commentRepo.findById(commentId);
 		Comment commentToRemove = commentToRemoveResult.get();
 		
 		Optional<Review> reviewResult = reviewRepo.findById(reviewId);
 		Review review = reviewResult.get();
+		
+		commentRepo.deleteById(commentId);
 		
 		review.removeComment(commentToRemove);
 		reviewRepo.save(review);
