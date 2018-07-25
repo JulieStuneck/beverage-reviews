@@ -3,6 +3,8 @@ const tagAddInput = document.querySelector('.add-tag input');
 const tagsList = document.querySelector('.tags-list ul');
 const tagRemoveButton = document.querySelector('.remove-tag button');
 const tagRemoveInput = document.querySelector('.remove-tag input');
+const commentRemoveButton = document.querySelector('.remove-comment button');
+const commentRemoveInput = document.querySelector('.remove-comment input');
 
 const xhr = new XMLHttpRequest()
 xhr. onreadystatechange = function(){
@@ -22,6 +24,14 @@ tagRemoveButton.addEventListener('click', function() {
 	if(ask == true){
 		removeTags(tagRemoveInput.value)
 		tagRemoveInput.value = ""
+	}
+})
+
+commentRemoveButton.addEventListener('click', function() {
+	var ask = confirm('Are you sure?');
+	if(ask == true){
+		removeComments(commentRemoveInput.value)
+		commentRemoveInput.value = ""
 	}
 })
 
