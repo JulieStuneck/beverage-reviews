@@ -52,7 +52,7 @@ public class CommentController {
 	
 	
 	//Use Ajax to remove comment from Database
-	@RequestMapping(path = "/comment/remove/{authorName}", method = RequestMethod.POST)
+	@RequestMapping(path = "/remove-comment/{authorName}", method = RequestMethod.POST)
 	public String Remove (@PathVariable String authorName, Model model) {
 		Comment commentToRemove = commentRepo.findByAuthor(authorName);
 		commentRepo.delete(commentToRemove);
