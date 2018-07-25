@@ -3,11 +3,11 @@ const tagAddInput = document.querySelector('.add-tag input');
 const tagsList = document.querySelector('.tags-list ul');
 const tagRemoveButton = document.querySelector('.remove-tag button');
 const tagRemoveInput = document.querySelector('.remove-tag input');
-const commentRemoveButton = document.querySelector('.remove-comment button');
-const commentRemoveInput = document.querySelector('.remove-comment input');
+//const commentRemoveButton = document.querySelector('.remove-comment button');
+//const commentRemoveInput = document.querySelector('.remove-comment input');
 
 const xhr = new XMLHttpRequest()
-xhr. onreadystatechange = function(){
+xhr.onreadystatechange = function(){
 	if(xhr.readyState===4 && xhr.status ===200){
 		const res = xhr.responseText
 		tagsList.innerHTML = res
@@ -27,13 +27,14 @@ tagRemoveButton.addEventListener('click', function() {
 	}
 })
 
-commentRemoveButton.addEventListener('click', function() {
-	var ask = confirm('Are you sure?');
-	if(ask == true){
-		removeComments(commentRemoveInput.value)
-		commentRemoveInput.value = ""
-	}
-})
+
+//commentRemoveButton.addEventListener('click', function() {
+//	var ask = confirm('Are you sure?');
+//	if(ask == true){
+//		removeComments(commentRemoveInput.value)
+//		commentRemoveInput.value = ""
+//	}
+//})
 
 
 function postTags(tagName) {
@@ -46,8 +47,8 @@ function removeTags(tagName){
 	xhr.send()
 }
 
-function removeComment(authorName) {
-	xhr.open('POST', '/comment/remove/' + authorName, true)
-	xhr.send()
-}
+//function removeComment(authorName) {
+//	xhr.open('POST', '/remove-comment' + authorName, true)
+//	xhr.send()
+//}
 

@@ -1,7 +1,10 @@
 body {	
 	text-align: center;
-   	background-color: #33cc33;	
-}
+	background-image: url("images/green2.jpg");
+   	background-color: #33cc33;
+   	background-repeat: no-repeat;
+  	background-size: cover;
+  }
 
 
 h1 {

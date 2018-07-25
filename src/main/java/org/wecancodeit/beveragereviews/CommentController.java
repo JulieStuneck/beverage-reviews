@@ -36,48 +36,30 @@ public class CommentController {
 		return "redirect:/review?id=" + reviewId;
 	}
 	
-//	@RequestMapping("/remove-comment-button")
-//	public String removeCommentButton(@RequestParam String author, @RequestParam Long commentId, @RequestParam Long reviewId) {
-//		Comment commentToRemoveResult = commentRepo.findByAuthor(author);
-//		Comment commentToRemove = commentToRemoveResult.getId();
-//		
-//		
-////		Optional<Review> reviewResult = reviewRepo.findById(reviewId);
-////		Review review = reviewResult.get();
-//		
-//		commentRepo.delete(commentToRemove);
-//		
-//		return "redirect:/review?id=" + reviewId;
-//	}
-	
-	
-	//Use Ajax to remove comment from Database
-	@RequestMapping(path = "/remove-comment/{authorName}", method = RequestMethod.POST)
-	public String Remove (@PathVariable String authorName, Model model) {
-		Comment commentToRemove = commentRepo.findByAuthor(authorName);
-		commentRepo.delete(commentToRemove);
-		model.addAttribute("commentsModel", commentRepo.findAll());						
-		return "redirect:/review?id=";
+	@RequestMapping("/remove-comment-button")
+	public String removeCommentButton(@RequestParam String author, @RequestParam Long reviewId) {
+		Optional<Comment> commentToRemoveResult = commentRepo.findByAuthor(author);
+		Comment commentToRemove = commentToRemoveResult.get();
+		
+		Optional<Review> reviewResult = reviewRepo.findById(reviewId);
+		Review review = reviewResult.get();
+		
+		review.removeComment(commentToRemove);
+		reviewRepo.save(review);
+		
+		return "redirect:/review?id=" + reviewId;
+				
 	}
 	
 	
-	//Show Comments with Java and Thymeleaf
-//	@RequestMapping("/all-comments-ajax")
-//	public String showAllComments(Model model) {
-//		model.addAttribute("commentsModel", commentRepo.findAll());
-//		return "commentsAjax";
+//	//Use Ajax to remove comment from Database
+//	@RequestMapping(path = "/remove-comment/{authorName}", method = RequestMethod.POST)
+//	public String Remove (@PathVariable String authorName, Model model) {
+//		Comment commentToRemove = commentRepo.findByAuthor(authorName);
+//		commentRepo.delete(commentToRemove);
+//		model.addAttribute("commentsModel", commentRepo.findAll());						
+//		return "redirect:/review?id=";
 //	}
-	
-	//Use Ajax to Add Comments to the Database
-//	@RequestMapping(path = "/comments/{commentName}", method = RequestMethod.POST)
-//	public String AddComment(@PathVariable String commentName, Model model) {
-//		Comment commentToAdd=commentRepo.findByDescription(commentName);
-//		if(commentToAdd == null) {
-//			commentToAdd = new Comment(commentName);
-//			commentRepo.save(commentToAdd);
-//		}
-//		
-//		return "";
-//	}
+//	
 
 }

@@ -19,9 +19,7 @@ public class Tag {
 	@ManyToMany(mappedBy = "tags")//We want to track reviews by tags
 	private Collection<Review> reviews;
 
-	public Tag(String description) {
-		this.description = description;
-	}
+	
 
 	public Tag() {
 	}
@@ -37,6 +35,10 @@ public class Tag {
 	public Collection<Review> getReviews() {
 
 		return reviews;
+	}
+	
+	public Tag(String description) {
+		this.description = description;
 	}
 
 	@Override

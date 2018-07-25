@@ -31,6 +31,21 @@ public class Review {
 	private Collection<Comment> comments;
 
 	private String image;
+	
+	//allowing the collection to add this tag we created in our form
+	public void addTag(Tag newTag) {
+		tags.add(newTag);		
+	}
+	
+	//allowing the collection to have a tag removed
+	public void removeTag(Tag tagToRemove) {
+		tags.remove(tagToRemove);		
+	}
+	
+	public void removeComment(Comment commentToRemove) {
+		comments.remove(commentToRemove);		
+	}
+
 
 	public long getId() {
 		return id;
@@ -94,16 +109,6 @@ public class Review {
 	}
 
 
-	//allowing the collection to add this tag we created in our form
-	public void addTag(Tag newTag) {
-		tags.add(newTag);		
-	}
-	
-	//allowing the collection to have a tag removed
-	public void removeTag(Tag tagToRemove) {
-		tags.remove(tagToRemove);
-		
-	}
 	
 }
 
