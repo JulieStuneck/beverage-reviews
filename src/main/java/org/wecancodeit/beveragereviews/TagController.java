@@ -61,7 +61,7 @@ public class TagController {
 	@RequestMapping("/all-tags-ajax")
 	public String showAllTags(Model model) {
 		model.addAttribute("tagsModel", tagRepo.findAll());
-		return "tagsAjax";
+		return "tagsAjax";//name of html template
 	}
 	
 	//Use Ajax to Add Tags to the Database

@@ -1,13 +1,26 @@
+*{
+	Line-height: 1.618em;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;	
+}
+
 body {	
 	text-align: center;
-	background-image: url("images/green2.jpg");
-   	background-color: #33cc33;
-   	background-repeat: no-repeat;
-  	background-size: cover;
+	background-image: url("/images/gray.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;	
   }
-
-
-h1 {
+  
+  
+ .container {
+	display: grid | inline-grid;
+	grid-gap: 10px;
+	grid-template-columns: 1fr 1fr ;
+	grid-template-rows: auto auto auto auto;
+}
+  
+ h1 {
 	font-family: sans-serif;
 	font-size: 40px;
 	color: white;
@@ -20,12 +33,132 @@ h2 {
 	color: white;
 }
 
+h3 {
+	font-family: sans-serif;
+	font-style: italic;
+	font-size: 25px;
+	color: white;	
+}
+
+h4 {
+	font-family: sans-serif;
+	font-style: italic;
+	font-size: 18px;
+	color: white;		
+}
+
+p {
+	font-family: sans-serif;	
+	font-size: 25px;
+	color: white;
+	font-style: italic;
+}
+
 a {
 	color: white;
 	text-decoration: none;
 	font-family: sans-serif;
 	font-size: 20px;
 }
+
 a:hover {
-    background-color: #248f24;
+    color: #c0c0c0;
 }
+
+
+
+.review-description {	
+	flex-direction: column;	
+	background-color: #c0c0c0;
+}
+
+.main {
+	display:flex;	
+	justify-content: space-around;
+	margin: 20px;
+}
+
+
+img {
+	border-style: ridge;
+ 	border-width: 4px;
+ 	border-color: white;
+}
+
+.review-description {
+	border-style: ridge;
+ 	border-width: 4px;
+ 	border-color: white;
+ 	margin-left: 400px;
+ 	margin-right: 400px; 
+ 	padding: 25px;	
+}
+
+
+
+.cats-tags {
+	display:flex;
+	flex-direction: column;
+	color: white;	
+}
+
+.categories {
+ 	margin: 20px;
+}
+
+#categories-title, #tags-title, #comment, #remove-comment {
+	border-bottom-style: ridge;
+}
+
+.tags {
+	margin: 20px;	
+}
+
+.create-delete-tags {
+	border-style: ridge;
+	margin: 10px;
+	padding: 10px;
+}
+
+.create-delete-tags li {
+	list-style-type: none;
+	font-family: sans-serif;
+}
+
+#addButton, #add-comment, #remove-comment-btn {
+	border-radius: 12px;
+	padding: 2px;
+	background: none;
+	font-family: sans-serif;
+	color: white;
+	hover: gray;
+}
+
+#addButton:hover, #x:hover, #add-comment:hover, #remove-comment-btn:hover {
+    color: #c0c0c0;
+}
+
+#x {
+	background: none;
+	border:none;
+	font-size: 17px;
+	color:white;
+}
+
+
+
+.comments {
+	display:flex;
+	flex-direction: column;
+	color: white;	
+}
+
+
+.footer {
+	display:flex;
+	justify-content: center;
+}
+
+
+
+

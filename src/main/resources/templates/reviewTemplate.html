@@ -1,90 +1,110 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-	<link rel="stylesheet" type="text/css" href="/css/reviewsStyles.css">
-	<title>A Review</title>
+<link rel="stylesheet" type="text/css" href="/css/reviewsStyles.css">
+<title>A Review</title>
 </head>
 <body>
 
-<div class="container">
+	<div class="container">
 
-	<h1>A Single Review</h1>
+		<div class="review" th:each="review: ${reviewsModel}">			
+			<img th:src="${review.image}">
+			<h1 th:text="${review.name}"></h1>
+			<p class="review-description" th:text="${review.description}"></p>
+			
+		<div class="main">	
+		<div class="cats-tags">
+			<article class="categories">
+				<h3 id="categories-title">Categories</h3>
+				<div th:each="category: ${review.beverage}">
+					<a th:href="@{/category(id=${category.id})}"
+						th:text="${category.beverage}"></a>
+				</div>
+			</article>
 
-	<div th:each="review: ${reviewsModel}">
-		<h2 th:text="${review.name}"></h2>
-		<p th:text="${review.description}"></p>
-		<img th:src="${review.image}">
-		
-		<h3>Category for this review</h3>
-		<div th:each="category: ${review.beverage}">
-			<a th:href="@{/category(id=${category.id})}" th:text="${category.beverage}"></a>
-		</div>
-		
-		<h3>Tags associated with this review</h3>
-		<div th:each="tag: ${review.tags}">
-			<a th:href="@{/tag(id=${tag.id})}" th:text="${tag.description}"></a>
-			</div>	
-			
-		<form method="POST">
-			<input name="reviewId" type="hidden" th:value="${review.id}"/>
-			<input type="text" name = "tagName" /> 
-			<button th:formaction="@{/add-tag}">add tag with HTML forms</button>
-		</form>
-		
-		<form method="POST">
-			<input name="reviewId" type="hidden" th:value="${review.id}"/>
-			<ul>
-				<li th:each="tag: ${review.tags}"><span th:text="${tag.description}"></span>
-				<button id="x" name="tagId" th:value="${tag.id}" th:formaction="@{remove-tag-button}">&times;</button>
-			</ul>
-		</form>
-		
-		<div class="add-comment">
-			<form method="POST">
-				<section>
-					<label>Enter your name:</label>
-					<input type="text" name="author"/>
-				</section>
-				<section>
-					<label>What do you think of this review?</label>
-					<input type="text" name="content"/>
-				</section>
-				<section>
-					<input type="hidden" th:value="${reviewsModel.id}" name="reviewId"/>
-				</section>
-				<section>
-					<button th:formaction = "@{/add-comment}">Add Comment</button>
-				</section>			
-			</form>
-			
-			<div th:each="comment: ${reviewsModel.comments}">
-				<h5><span th:text="${comment.author}">Commenter</span> says...</h5>
-				<p th:text="${comment.content}"></p>
-			</div>
-		</div>			
-			
-		<div class="remove-comment-button">
-			<form method="POST">
-			<section>
-					<input type="hidden" th:value="${reviewsModel.id}" name="reviewId"/>
-				</section>
-				<section>
-					<label>Whose comment do you want to remove?:</label>
-					<input type="text" name="author"/>
-				</section>	
+			<article class="tags">
+				<h3 id="tags-title">Tags</h3>
+				<div th:each="tag: ${review.tags}">
+					<a th:href="@{/tag(id=${tag.id})}" th:text="${tag.description}"></a>
+				</div>
 				
-				<section>
-					<button th:formaction = "@{/remove-comment-button}">Remove Comment</button>
-				</section>						
-			</form>			
+				<section class="create-delete-tags">
+				<form method="POST">
+					<h4>Create or delete tags:</h4>
+					<input name="reviewId" type="hidden" th:value="${review.id}" /> <input
+						type="text" name="tagName" />
+					<button id="addButton" th:formaction="@{/add-tag}">add</button>
+				</form>
+
+				<form method="POST">
+					<input name="reviewId" type="hidden" th:value="${review.id}" />
+					<ul>
+						<li th:each="tag: ${review.tags}"><span	th:text="${tag.description}"></span>
+							<button id="x" name="tagId" th:value="${tag.id}" th:formaction="@{remove-tag-button}">&times;</button>
+					</ul>
+				</form>
+				</section>
+			</article>
 		</div>
- 				
-	</div>
-	
-			<a href="http://localhost:8080/reviews">Back to Reviews View</a>
-			
-</div> 	<!-- container -->	
-	
+
+			<article class="comments">
+				<div class="add-comment">
+					<form method="POST">
+						<section>
+						<h3 id="comment">Leave a comment.</h3>
+							<label>Enter your name:</label> <input type="text" name="author" />
+						</section>
+						<section>
+							<label>What do you think of this review?</label> <input
+								type="text" name="content" />
+						</section>
+						<section>
+							<input type="hidden" th:value="${reviewsModel.id}"
+								name="reviewId" />
+						</section>
+						<section>
+							<button id="add-comment" th:formaction="@{/add-comment}">Add Comment</button>
+						</section>
+					</form>
+
+					<div th:each="comment: ${reviewsModel.comments}">
+						<h5>
+							<span th:text="${comment.author}">Commenter</span> says...
+						</h5>
+						<p th:text="${comment.content}"></p>
+					</div>
+				</div>
+
+				<div class="remove-comment-button">
+					<h3 id="remove-comment">Remove a Comment.</h3>
+					<form method="POST">
+						<section>
+							<input type="hidden" th:value="${reviewsModel.id}"
+								name="reviewId" />
+						</section>
+						<section>
+							<label>Whose comment do you want to remove?:</label> <input
+								type="text" name="author" />
+						</section>
+
+						<section>
+							<button id="remove-comment-btn" th:formaction="@{/remove-comment-button}">Remove
+								Comment</button>
+						</section>
+					</form>
+				</div>
+			</article>
+			</div>
+		</div>
 		
+		<footer>
+			<a href="http://localhost:8080/reviews">Back to Beverage Reviews Home</a>
+		</footer>
+		
+	</div>
+	<!-- container -->
+
+
 </body>
 </html>

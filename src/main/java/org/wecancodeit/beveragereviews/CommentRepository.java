@@ -6,7 +6,7 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface CommentRepository extends CrudRepository<Comment, Long> {
 
-	Optional<Comment> findByAuthor(String author);
+	Comment findByAuthor(String author);
 
 
 

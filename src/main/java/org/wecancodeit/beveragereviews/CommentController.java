@@ -36,14 +36,7 @@ public class CommentController {
 		return "redirect:/review?id=" + reviewId;
 	}
 	
-//	@RequestMapping("/remove-comment-button")
-//	public String removeComment(String author, Long reviewId) {
-//		Comment toRemove = commentRepo.findByAuthor(author);
-//		commentRepo.delete(toRemove);
-//		
-//		return "redirect:/review?id=" + reviewId;
-//	}
-//	
+
 	@RequestMapping("/remove-comment-button")
 	public String removeComment(String author, Long reviewId) {
 		Comment toRemove = commentRepo.findByAuthor(author);
