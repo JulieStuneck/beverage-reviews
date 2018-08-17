@@ -8,16 +8,16 @@
 </head>
 
 <body>
-	<h1>Basic Beverages for Quality of Life</h1>
-	<img src="/images/Drinks2.jpg" alt="beverages">
-
-	<h2>Click the links below for helpful information</h2>
+	<div class="title">
+		<h1>Basic Beverages for Quality of Life</h1>
+		<img src="/images/Drinks2.jpg" alt="beverages">
+	</div>
 	
-
-	<div th:each="review: ${reviewsModel}">
-		
-		<a th:href="@{/review(id=${review.id})}"  th:text="${review.name}"></a>		
-			
+	<div class="list">
+		<h2>Click the links below for helpful information</h2>
+			<div th:each="review: ${reviewsModel}">
+				<a th:href="@{/review(id=${review.id})}" th:text="${review.name}"></a>
+			</div>
 	</div>
 
 </body>

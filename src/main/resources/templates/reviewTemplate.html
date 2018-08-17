@@ -16,7 +16,7 @@
 		<div class="main">	
 		<div class="cats-tags">
 			<article class="categories">
-				<h3 id="categories-title">Categories</h3>
+				<h3 id="categories-title">Beverage Type</h3>
 				<div th:each="category: ${review.beverage}">
 					<a th:href="@{/category(id=${category.id})}"
 						th:text="${category.beverage}"></a>
@@ -49,7 +49,7 @@
 		</div>
 
 			<article class="comments">
-				<div class="add-comment">
+				<div>
 					<form method="POST">
 						<section>
 						<h3 id="comment">Leave a comment.</h3>
@@ -68,10 +68,10 @@
 						</section>
 					</form>
 
-					<div th:each="comment: ${reviewsModel.comments}">
-						<h5>
+					<div class="comment-response" th:each="comment: ${reviewsModel.comments}">
+						<h4>
 							<span th:text="${comment.author}">Commenter</span> says...
-						</h5>
+						</h4>
 						<p th:text="${comment.content}"></p>
 					</div>
 				</div>
@@ -99,7 +99,7 @@
 		</div>
 		
 		<footer>
-			<a href="http://localhost:8080/reviews">Back to Beverage Reviews Home</a>
+			<a href="http://localhost:8080/reviews">Return Home</a>
 		</footer>
 		
 	</div>
