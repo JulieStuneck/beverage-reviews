@@ -1,3 +1,3 @@
 This program offers reviews of several beverages. 
-It allows users to click between categories of beverages, 
-as well as tags associated with the reviews. 
+It allows users write and delete comments, as well as click between categories of beverages, 
+and tags associated with the reviews. 
